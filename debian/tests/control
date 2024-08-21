@@ -1,0 +1,40 @@
+Tests: upstream-testsuite
+Architecture: amd64
+Depends:
+ @,
+ cmake,
+ g++,
+ make,
+ pkgconf,
+ spirv-headers,
+ spirv-tools,
+ clang-14,
+ llvm-14-dev,
+Restrictions:
+ allow-stderr,
+
+Test-Command: debian/tests/upstream-testsuite
+Features: test-name=upstream-testsuite-flaky
+Architecture: !amd64 !s390x
+Depends:
+ @,
+ cmake,
+ g++,
+ make,
+ pkgconf,
+ spirv-headers,
+ spirv-tools,
+ clang-14,
+ llvm-14-dev,
+Restrictions:
+ allow-stderr,
+ flaky,
+
+Test-Command: true
+Features: test-name=spirv-headers-compatibility
+Depends:
+ spirv-headers,
+Restrictions:
+ build-needed,
+ allow-stderr,
+ superficial,
